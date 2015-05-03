@@ -1,0 +1,20 @@
+{
+  "name": "unexpected-documentation-site-generator",
+  "version": "1.0.0",
+  "description": "Documentation site generator for Unexpected plugins",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:unexpectedjs/unexpected-documentation-site-generator.git"
+  },
+  "keywords": [
+    "unexpected",
+    "documentation"
+  ],
+  "author": "Sune Simonsen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/unexpectedjs/unexpected-documentation-site-generator/issues"
+  },
+  "homepage": "https://github.com/unexpectedjs/unexpected-documentation-site-generator"
+}
