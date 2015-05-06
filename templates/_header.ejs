@@ -20,7 +20,7 @@
                 <li class="<%- '/' + path === page.url ? 'active' : '' %>"><a href="<%= page.url %>"><%= page.title %></a></li>
                 <% }) %>
                 <% if (Object.keys(assertionsByType).length > 0) { %>
-                <li class="<%- path.match(/^assertions\/?/) ? 'active' : '' %>"><a href="<%= assertionsByType.any[0].url %>">Assertions</a></li>
+                <li class="<%- path.match(/^assertions\/?/) ? 'active' : '' %>"><a href="<%= assertionsByType[Object.keys(assertionsByType)[0]][0].url %>">Assertions</a></li>
                 <% } %>
                 <% if (collections.apiPages.length > 0) { %>
                 <li class="<%- path.match(/^api\/?/) ? 'active' : '' %>"><a href="<%= collections.apiPages[0].url %>">API</a></li>
