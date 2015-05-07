@@ -193,6 +193,7 @@ module.exports = function generate(options) {
             next();
         })
         .use(require('metalsmith-less')())
+        .use(require('metalsmith-relative')())
         .use(require('metalsmith-templates')({
             engine: 'ejs',
             directory: path.resolve(__dirname, 'templates')
@@ -203,5 +204,4 @@ module.exports = function generate(options) {
             if (err) { throw err; }
             console.log('wrote site to site-build');
         });
-
-}
+};
