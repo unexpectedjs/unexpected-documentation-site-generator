@@ -183,7 +183,7 @@ module.exports = function generate(options) {
         .use(require('metalsmith-unexpected-markdown')({
             unexpected: expect,
             testFile: path.resolve('.', 'test', 'documentation.spec.js'),
-            updateExamples: !!options['updateExamples']
+            updateExamples: !!options['update-examples']
         }))
     // permalinks with no options will just make pretty urls...
         .use(require('metalsmith-permalinks')({ relative: false }))
