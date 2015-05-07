@@ -9,9 +9,7 @@ npm run generate-site
 git fetch origin gh-pages
 git checkout -B gh-pages origin/gh-pages
 rm `git ls-files | grep -v '^\.gitignore$'`
-if [ ! -f ".gitignore" ]; then
-    echo "node_modules" > .gitignore
-fi
+printf "node_modules\nsite-build\n" > .gitignore
 cp -r site-build/* .
 if [ "`git status --porcelain`" != "" ]; then \
 	(git add -A . && \
