@@ -1,4 +1,9 @@
 #!/bin/sh
+if [ -n "$(git describe --always --dirty | grep -- -dirty)" ]
+then
+    echo "Working tree is dirty, please commit or stash your changes, then try again"
+    exit 1
+fi
 CURRENT_BRANCH=`git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||'`
 npm run generate-site
 git fetch origin gh-pages
