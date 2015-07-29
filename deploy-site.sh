@@ -8,6 +8,14 @@ fi
 TARGET_BRANCH=${1:-gh-pages}
 CURRENT_BRANCH=`git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||'`
 npm run generate-site
+
+if [ -n "$(git describe --always --dirty | grep -- -dirty)" ]
+then
+    echo "Working tree is dirty after generating the site. Make sure that your documentation tests"
+    echo "are fully updated and that site-build is in .gitignore etc."
+    exit 1
+fi
+
 git fetch origin $TARGET_BRANCH
 if [ `git branch --list -a origin/$TARGET_BRANCH` ]; then \
     git checkout -B $TARGET_BRANCH origin/$TARGET_BRANCH
