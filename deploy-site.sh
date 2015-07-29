@@ -9,7 +9,7 @@ TARGET_BRANCH=${1:-gh-pages}
 CURRENT_BRANCH=`git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||'`
 npm run generate-site
 git fetch origin $TARGET_BRANCH
-if [ `git branch --list origin/$TARGET_BRANCH `]; then \
+if [ `git branch --list -a origin/$TARGET_BRANCH` ]; then \
     git checkout -B $TARGET_BRANCH origin/$TARGET_BRANCH
 else \
     git checkout --orphan $TARGET_BRANCH && \
