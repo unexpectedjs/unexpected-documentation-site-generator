@@ -1,6 +1,6 @@
 {
   "name": "unexpected-documentation-site-generator",
-  "version": "2.8.0",
+  "version": "2.9.0",
   "description": "Documentation site generator for Unexpected plugins",
   "main": "index.js",
   "repository": {
