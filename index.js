@@ -1,4 +1,4 @@
-/*global __dirname*/
+/*global __dirname, unexpected*/
 var metalSmith = require('metalsmith');
 var path = require('path');
 
@@ -55,9 +55,29 @@ function addTypeToIndex(typeIndex, type) {
     }
 }
 
+function createExpect(options) {
+    if (options.unexpected) {
+        return options.unexpected.clone();
+    }
+
+    if (typeof unexpected !== 'undefined') {
+        return unexpected.clone();
+    }
+
+    return require('unexpected').clone();
+}
+
 
 module.exports = function generate(options) {
-    var expect = options.unexpected;
+    if (options.require) {
+        var moduleName = options.require;
+        if (/^[\.\/]/.test(moduleName)) {
+            moduleName = path.resolve(process.cwd(), moduleName);
+        }
+        require(moduleName);
+    }
+
+    var expect = createExpect(options);
 
     function sortTypesByHierarchy(assertionsByType) {
         var typeIndex = {};

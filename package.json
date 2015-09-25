@@ -32,14 +32,11 @@
     "metalsmith-relative": "1.0.3",
     "metalsmith-static": "0.0.5",
     "metalsmith-templates": "0.6.0",
-    "metalsmith-unexpected-markdown": "^2.3.1",
+    "metalsmith-unexpected-markdown": "^2.4.0",
     "minimatch": "2.0.7",
+    "minimist": "1.2.0",
     "passerror": "1.1.0",
     "stat-mode": "0.2.0"
-  },
-  "peerDependencies": {
-    "minimist": "*",
-    "unexpected": "*"
   },
   "directories": {
     "bin": "bin"
