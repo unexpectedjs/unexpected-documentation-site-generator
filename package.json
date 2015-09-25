@@ -41,7 +41,7 @@
     "minimist": "*",
     "unexpected": "*"
   },
-  "bin": {
-    "deploy-site": "deploy-site.sh"
+  "directories": {
+    "bin": "bin"
   }
 }
