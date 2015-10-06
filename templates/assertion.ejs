@@ -5,6 +5,13 @@
     <div class="main" tabindex="-1">
         <div class="content">
             <h1><%= title %></h1>
+            <% if (declarations.length > 0) { %>
+                <ul class="declarations">
+                <% declarations.forEach(function (declaration) { %></p>
+                    <li><%= declaration %></li>
+                <% }); %>
+                </ul>
+            <% } %>
             <%- contents %>
         </div>
     </div>

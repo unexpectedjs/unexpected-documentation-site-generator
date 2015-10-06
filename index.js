@@ -1,6 +1,7 @@
 /*global __dirname, unexpected*/
 var metalSmith = require('metalsmith');
 var path = require('path');
+var _ = require('lodash');
 
 function idToName(id) {
     return id.replace(/-/g, ' ');
@@ -135,6 +136,12 @@ module.exports = function generate(options) {
                     files[file].template = 'api.ejs';
                 } else if (files[file].collection.indexOf('assertions') !== -1) {
                     var type = file.match(/^assertions\/([^\/]+)/)[1];
+
+                    files[file].declarations = _.unique((expect.assertions[name] || []).filter(function (assertionRule) {
+                        return assertionRule.subject.type.name === type;
+                    }).map(function (assertionRule) {
+                        return assertionRule.declaration.replace(/[\[\]]/g, '');
+                    }));
 
                     files[file].template = 'assertion.ejs';
                     files[file].windowTitle = type + ' - ' + name;

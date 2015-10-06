@@ -23,6 +23,7 @@
     "debug": "2.1.1",
     "ejs": "1.0.0",
     "glob": "4.3.2",
+    "lodash": "3.10.1",
     "metalsmith": "1.0.1",
     "metalsmith-autoprefixer": "1.0.1",
     "metalsmith-collections": "0.6.0",
