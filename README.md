@@ -5,31 +5,41 @@ This is a documentation site generator extracted from
 useful for building documentation sites for unexpected plugins and
 unexpected itself.
 
-You add a `generate-site.js` file to your project containing the
-following code:
-
-```js
-var argv = require('minimist')(process.argv.slice(2));
-
-var unexpected = require('unexpected');
-var generator = require('unexpected-documentation-site-generator');
-argv.unexpected = unexpected;
-generator(argv);
-```
-
 Then you add the following scripts to `package.json`:
 
 ```json
 "scripts": {
-  "generate-site": "node generate-site.js",
-  "update-examples": "node generate-site.js --update-examples"
+  "generate-site": "generate-site --require ./bootstrap-unexpected-markdown.js",
+  "update-examples": "generate-site --require ./bootstrap-unexpected-markdown.js --update-examples",
+  "deploy-site": "deploy-site"
 },
 ```
 
-I know this is anoying but we need to control which version of
-unexpected is used, and a peer dependency wont cut it.
+If you need a custom setup for your pages, you can add a bootstrap file:
 
-Then you add markdown files in a documentation directory. The
+You add a `bootstrap-unexpected-markdown.js` file to your project containing the
+following code:
+
+```js
+// It is important that unexpected is global:
+unexpected = require('unexpected');
+unexpected.use(require('my-plugin'));
+```
+
+I know this is anoying but we need to control which version of unexpected is
+used, and a peer dependency wont cut it.
+
+Then you update your npm scripts to require the bootstrap file:
+
+```json
+"scripts": {
+  "generate-site": "generate-site --require ./bootstrap-unexpected-markdown.js",
+  "update-examples": "generate-site --require ./bootstrap-unexpected-markdown.js --update-examples",
+  "deploy-site": "deploy-site"
+},
+```
+
+Now you are ready to add markdown files in a documentation directory. The
 subfolders `assertions` and `api` are special. In the `assertions`
 folder you add documentation for assertions grouped by type. In the
 `api` folder you add documentation for api methods. See
