@@ -140,7 +140,7 @@ module.exports = function generate(options) {
                     files[file].declarations = _.unique((expect.assertions[name] || []).filter(function (assertionRule) {
                         return assertionRule.subject.type.name === type;
                     }).map(function (assertionRule) {
-                        return assertionRule.declaration.replace(/[\[\]]/g, '');
+                        return assertionRule.declarationt;
                     }));
 
                     files[file].template = 'assertion.ejs';
