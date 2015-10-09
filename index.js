@@ -189,6 +189,27 @@ module.exports = function generate(options) {
         })
         .use(function (files, metalsmith, next) {
             var metadata = metalsmith.metadata();
+            Object.keys(metadata.assertionsByType).forEach(function (type) {
+                var declarations = [];
+                metadata.assertionsByType[type].forEach(function (assertion) {
+                    Array.prototype.push.apply(declarations, assertion.declarations);
+                });
+
+                var path = 'assertions/' + type + '/';
+                var file = 'assertions/' + type + '.html';
+                files[file] = {
+                    windowTitle: type,
+                    title: type,
+                    declarations: _.unique(declarations),
+                    template: 'type.ejs',
+                    url: path,
+                    contents: ''
+                };
+            });
+            next();
+        })
+        .use(function (files, metalsmith, next) {
+            var metadata = metalsmith.metadata();
             var indexData = [];
 
             metadata.collections.apiPages.forEach(function (assertion) {

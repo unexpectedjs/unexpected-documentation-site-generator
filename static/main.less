@@ -59,7 +59,7 @@ h3 {
 nav {
     ul {
         padding: 10px;
-        padding-right: 0;
+        margin: 0;
     }
     li {
         list-style: none;
@@ -69,6 +69,10 @@ nav {
         text-decoration: none;
     }
     a:hover {
+        text-decoration: underline;
+    }
+
+    .active a {
         text-decoration: underline;
     }
 }
@@ -123,7 +127,7 @@ header {
         top: @headerHeight;
         right: auto;
         width: @navWidth;
-        padding: 0 20px;
+        padding: 30px;
         overflow-y: auto;
         .iOsScrollFix();
     }
@@ -136,12 +140,6 @@ header {
     .iOsScrollFix();
     &:focus {
         outline: none;
-    }
-}
-
-nav {
-    li.active a {
-        text-decoration: underline;
     }
 }
 
@@ -281,22 +279,40 @@ code {
             h3 {
                 margin: 0;
                 font-weight: bold;
-                padding: 9px 0;
+                padding: 0;
                 padding-left: 20px;
+                &:hover {
+                    background-color: lighten(@mobileSidebarColor, 10%);
+                }
+                &.active {
+                    background-color: lighten(@mobileSidebarColor, 15%);
+                }
             }
             a {
                 display: block;
                 color: white;
                 padding: 9px 0;
-                padding-left: 35px;
                 &:hover {
                     text-decoration: none;
                 }
             }
-            li.active a {
-                background-color: lighten(@mobileSidebarColor, 15%);
+            .active a {
                 text-decoration: none;
             }
+            li {
+                a {
+                    padding-left: 35px;
+                }
+
+                &:hover {
+                    background-color: lighten(@mobileSidebarColor, 10%);
+                }
+
+                &.active {
+                    background-color: lighten(@mobileSidebarColor, 15%);
+                }
+            }
+
             ul {
                 margin: 0;
                 padding: 0;
