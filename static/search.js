@@ -171,5 +171,7 @@ var getJSON = function (url, successHandler, errorHandler) {
 };
 
 getJSON(baseUrl + '/searchIndex.json', function (status, data) {
-    setupSearch(data);
+    if (data.length > 0) {
+        setupSearch(data);
+    }
 });
