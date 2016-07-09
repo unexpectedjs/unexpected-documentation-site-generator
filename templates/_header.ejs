@@ -8,7 +8,7 @@
     <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="<%= relative('/static/bug-icon-black.ico') %>">
     <title><%= windowTitle %></title>
 </head>
-<body class="sidebar-hidden<%=typeof hasSidebar !== 'undefined' ? ' has-sidebar' : ''%>">
+<body class="sidebar-hidden<%=typeof hasSidebar !== 'undefined' ? ' has-sidebar' : ''%><%=typeof theme !== 'undefined' ? ' theme-' + theme : '' %>"> 
     <header>
         <div class="logo-icon"></div>
         <nav>
