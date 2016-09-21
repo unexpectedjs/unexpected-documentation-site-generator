@@ -27,14 +27,14 @@ function flattenTypeHierarchy(typeHierarchy, assertionsByType) {
         if (aChildren.length > 0 && bChildren.length === 0) {
             return 1;
         }
-
-        if (assertionsByType[a].length > assertionsByType[b].length) {
+        var aLength = assertionsByType[a] ? assertionsByType[a].length : 0;
+        var bLength = assertionsByType[b] ? assertionsByType[b].length : 0;
+        if (aLength > bLength) {
             return -1;
         }
-        if (assertionsByType[a].length < assertionsByType[b].length) {
+        if (aLength < bLength) {
             return 1;
         }
-
 
         a = a.toLowerCase();
         b = b.toLowerCase();
