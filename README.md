@@ -26,7 +26,7 @@ unexpected = require('unexpected');
 unexpected.use(require('my-plugin'));
 ```
 
-I know this is anoying but we need to control which version of unexpected is
+I know this is annoying but we need to control which version of unexpected is
 used, and a peer dependency wont cut it.
 
 Then you update your npm scripts to require the bootstrap file:
@@ -38,6 +38,11 @@ Then you update your npm scripts to require the bootstrap file:
   "deploy-site": "deploy-site"
 },
 ```
+
+### Other options
+
+#### `--output <directory>`
+Changes the default output directory from `site-build`
 
 Now you are ready to add markdown files in a documentation directory. The
 subfolders `assertions` and `api` are special. In the `assertions`
