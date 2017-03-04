@@ -104,11 +104,8 @@ module.exports = function generate(options) {
 
         return result;
     }
-    
-    var assertionsPattern = null;
-    if (options.assertions) {
-        assertionsPattern = options.assertions;
-    }
+
+    var assertionsPattern = options.assertions || 'assertions/*/*.md';
     var output = options.output || 'site-build';
 
     metalSmith('.')
@@ -116,7 +113,7 @@ module.exports = function generate(options) {
         .source('documentation')
         .use(require('metalsmith-collections')({
             assertions: {
-                pattern: assertionsPattern || 'assertions/*/*.md'
+                pattern: assertionsPattern
             },
             apiPages: {
                 pattern: 'api/*.md'
