@@ -39,14 +39,27 @@ Then you update your npm scripts to require the bootstrap file:
 },
 ```
 
-### Other options
-
-#### `--output <directory>`
-Changes the default output directory from `site-build`
-
 Now you are ready to add markdown files in a documentation directory. The
 subfolders `assertions` and `api` are special. In the `assertions`
 folder you add documentation for assertions grouped by type. In the
 `api` folder you add documentation for api methods. See
 [unexpected](https://github.com/unexpectedjs/unexpected/tree/master/documentation)
 as an example on how to structure the documentation.
+
+## generate-site options
+
+### `--require <file>`
+
+Specify a file to be required into the global scope.
+
+### `--output <directory>`
+
+Changes the default output directory from `site-build`.
+
+### `--assertions <glob pattern>`
+
+Changes the default pattern for finding assertion files from `assertions/*/*.md`.
+
+### `--update-examples`
+
+Updated the code examples in the assertion documentation files.
