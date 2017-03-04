@@ -104,13 +104,19 @@ module.exports = function generate(options) {
 
         return result;
     }
+    
+    var assertionsPattern = null;
+    if (options.assertions) {
+        assertionsPattern = options.assertions;
+    }
+    var output = options.output || 'site-build';
 
     metalSmith('.')
-        .destination('site-build')
+        .destination(output)
         .source('documentation')
         .use(require('metalsmith-collections')({
             assertions: {
-                pattern: 'assertions/*/*.md'
+                pattern: assertionsPattern || 'assertions/*/*.md'
             },
             apiPages: {
                 pattern: 'api/*.md'
@@ -249,6 +255,6 @@ module.exports = function generate(options) {
         .use(require('./lib/delete-less-files')())
         .build(function (err) {
             if (err) { throw err; }
-            console.log('wrote site to site-build');
+            console.log('wrote site to ' + output);
         });
 };
