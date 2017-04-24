@@ -200,7 +200,7 @@ module.exports = function generate(options) {
                 files[file] = {
                     windowTitle: type,
                     title: type,
-                    declarations: _.unique(declarations),
+                    declarations: _.uniq(declarations),
                     template: 'type.ejs',
                     url: path,
                     contents: ''
