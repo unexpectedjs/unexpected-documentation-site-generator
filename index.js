@@ -140,7 +140,7 @@ module.exports = function generate(options) {
                 } else if (files[file].collection.indexOf('assertions') !== -1) {
                     var type = file.match(/^assertions\/([^\/]+)/)[1];
 
-                    files[file].declarations = _.unique((expect.assertions[name] || []).filter(function (assertionRule) {
+                    files[file].declarations = _.uniq((expect.assertions[name] || []).filter(function (assertionRule) {
                         return assertionRule.subject.type.name === type;
                     }).map(function (assertionRule) {
                         return assertionRule.declaration.replace(/<.*?>/, '<' + assertionRule.subject.type.name + '>');
@@ -203,7 +203,7 @@ module.exports = function generate(options) {
                 files[file] = {
                     windowTitle: type,
                     title: type,
-                    declarations: _.unique(declarations),
+                    declarations: _.uniq(declarations),
                     template: 'type.ejs',
                     url: path,
                     contents: ''
