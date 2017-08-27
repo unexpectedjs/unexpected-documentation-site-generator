@@ -73,7 +73,7 @@ module.exports = function generate(options) {
     if (options.require) {
         var moduleNames = options.require;
         if (!Array.isArray(moduleNames)) {
-            moduleNames = [ moduleName ];
+            moduleNames = [ moduleNames ];
         }
         moduleNames.forEach(function (moduleName) {
             if (/^[\.\/]/.test(moduleName)) {
