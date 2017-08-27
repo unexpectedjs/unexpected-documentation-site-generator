@@ -71,11 +71,16 @@ function createExpect(options) {
 
 module.exports = function generate(options) {
     if (options.require) {
-        var moduleName = options.require;
-        if (/^[\.\/]/.test(moduleName)) {
-            moduleName = path.resolve(process.cwd(), moduleName);
+        var moduleNames = options.require;
+        if (!Array.isArray(moduleNames)) {
+            moduleNames = [ moduleName ];
         }
-        require(moduleName);
+        moduleNames.forEach(function (moduleName) {
+            if (/^[\.\/]/.test(moduleName)) {
+                moduleName = path.resolve(process.cwd(), moduleName);
+            }
+            require(moduleName);
+        });
     }
 
     var expect = createExpect(options);
