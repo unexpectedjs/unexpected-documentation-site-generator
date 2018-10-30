@@ -1,3 +1,4 @@
+/*global localStorage*/
 function rememberScrollPosition() {
   function rememberScrollPositionForElement(element) {
     var id = element.getAttribute('id');

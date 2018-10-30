@@ -84,7 +84,7 @@ module.exports = function generate(options) {
       moduleNames = [moduleNames];
     }
     moduleNames.forEach(function(moduleName) {
-      if (/^[\.\/]/.test(moduleName)) {
+      if (/^[./]/.test(moduleName)) {
         moduleName = path.resolve(process.cwd(), moduleName);
       }
       require(moduleName);
@@ -151,7 +151,7 @@ module.exports = function generate(options) {
           return /\.md$/.test(file);
         })
         .forEach(function(file) {
-          var id = file.match(/([^\/]+)\.md$/)[1];
+          var id = file.match(/([^/]+)\.md$/)[1];
           var name = idToName(id);
 
           if (!files[file].title) {
@@ -161,7 +161,7 @@ module.exports = function generate(options) {
           if (files[file].collection.indexOf('apiPages') !== -1) {
             files[file].template = 'api.ejs';
           } else if (files[file].collection.indexOf('assertions') !== -1) {
-            var type = file.match(/^assertions\/([^\/]+)/)[1];
+            var type = file.match(/^assertions\/([^/]+)/)[1];
 
             files[file].declarations = _.uniq(
               (expect.assertions[name] || [])

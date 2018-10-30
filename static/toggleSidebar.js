@@ -1,5 +1,7 @@
+/*global localStorage*/
+
+// eslint-disable-next-line no-unused-vars
 function toggleSidebar() {
-  // eslint-disable-line no-unused-vars
   var body = document.body;
   body.className = body.className.replace(
     /\bsidebar-(visible|hidden)\b/,
