@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const ghPages = require('gh-pages');
 const path = require('path');
-const fs = require("fs");
+const fs = require('fs');
 const childProcess = require('child_process');
 
 const packageJson = path.join(process.cwd(), 'package.json');
@@ -11,13 +11,12 @@ if (!fs.existsSync(packageJson)) {
     process.exit(1);
 }
 
-const scripts = JSON.parse(fs.readFileSync(packageJson, 'utf-8')).scripts
+const scripts = require(packageJson).scripts
 
 if (!scripts || !scripts['generate-site']) {
     console.error('Please setup a generate-site script in your package.json');
     process.exit(1);
 }
-
 
 childProcess.execSync('npm run generate-site')
 
