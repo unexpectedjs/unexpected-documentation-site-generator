@@ -8,7 +8,7 @@
     <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="<%= relative('/static/bug-icon-black.ico') %>">
     <title><%= windowTitle %></title>
 </head>
-<body class="sidebar-hidden<%=typeof hasSidebar !== 'undefined' ? ' has-sidebar' : ''%><%=typeof theme !== 'undefined' ? ' theme-' + theme : '' %>"> 
+<body class="sidebar-hidden<%=typeof hasSidebar !== 'undefined' ? ' has-sidebar' : ''%><%=typeof theme !== 'undefined' ? ' theme-' + theme : '' %>">
     <header>
         <div class="logo-icon"></div>
         <nav>
@@ -17,16 +17,16 @@
                     <button class="menu-toggle" onclick="toggleSidebar()"></button>
                 </li>
                 <% collections.pages.filter(function (page) { return page.url === '/' }).forEach(function (page) { %>
-                <li class="<%- path === '' ? 'active' : '' %>"><a href="<%= relative('/') + '/' %>"><%= page.title %></a></li>
+                <li class="<%- path === '' ? 'active' : '' %>"><a href="<%= (relative('/') || '.') + '/' %>"><%= page.title %></a></li>
                 <% }) %>
                 <% if (Object.keys(assertionsByType).length > 0) { %>
-                <li class="<%- path.match(/^assertions\/?/) ? 'active' : '' %>"><a href="<%= relative(assertionsByType[Object.keys(assertionsByType)[0]][0].url) + '/' %>">Assertions</a></li>
+                <li class="<%- path.match(/^assertions\/?/) ? 'active' : '' %>"><a href="<%= (relative(assertionsByType[Object.keys(assertionsByType)[0]][0].url) || '') + '/' %>">Assertions</a></li>
                 <% } %>
                 <% if (collections.apiPages.length > 0) { %>
-                <li class="<%- path.match(/^api\/?/) ? 'active' : '' %>"><a href="<%= relative(collections.apiPages[0].url) + '/' %>">API</a></li>
+                <li class="<%- path.match(/^api\/?/) ? 'active' : '' %>"><a href="<%= (relative(collections.apiPages[0].url) || '.') + '/' %>">API</a></li>
                 <% } %>
                 <% collections.pages.filter(function (page) { return page.url !== '/' }).forEach(function (page) { %>
-                <li class="<%- '/' + path + '/' === page.url ? 'active' : '' %>"><a href="<%= relative(page.url) + '/' %>"><%= page.title %></a></li>
+                <li class="<%- '/' + path + '/' === page.url ? 'active' : '' %>"><a href="<%= (relative(page.url) || '.') + '/' %>"><%= page.title %></a></li>
                 <% }) %>
             </ul>
         </nav>
