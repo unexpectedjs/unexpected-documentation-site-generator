@@ -1,3 +1,9 @@
+### v5.0.1 (2019-01-02)
+
+- [#19](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/19) Avoid href=/ when issuing a relative link to the current page ([Andreas Lind](mailto:andreaslindpetersen@gmail.com))
+- [#11](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/11) Add prettier setup, remove onelint ([Andreas Lind](mailto:andreaslindpetersen@gmail.com))
+- [#10](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/10) Improved release setup with changelog and linting ([Sune Simonsen](mailto:sune@we-knowhow.dk))
+
 ### v5.0.0 (2018-10-30)
 
 - [#8](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/8) Use gh pages (Major) ([Sune Simonsen](mailto:sune@we-knowhow.dk))
