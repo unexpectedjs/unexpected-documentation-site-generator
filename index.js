@@ -193,11 +193,13 @@ module.exports = function generate(options) {
     .use(function(files, metalsmith, next) {
       var metadata = metalsmith.metadata();
 
-      metadata.collections.menuPages = metadata.collections.pages.filter(function (page) {
-        return page.url !== '/' && page.menuPage !== false;
-      });
+      metadata.collections.menuPages = metadata.collections.pages.filter(
+        function(page) {
+          return page.url !== '/' && page.menuPage !== false;
+        }
+      );
 
-      metadata.collections.menuPages.forEach(function (page) {
+      metadata.collections.menuPages.forEach(function(page) {
         page.collection.push('menuPages');
       });
 
