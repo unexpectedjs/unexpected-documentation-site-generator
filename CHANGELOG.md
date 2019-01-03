@@ -1,3 +1,7 @@
+### v5.1.0 (2019-01-03)
+
+- [#20](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/20) Allow top-level menu pages to not generate a menu entry ([Sune Simonsen](mailto:sune@we-knowhow.dk))
+
 ### v5.0.1 (2019-01-02)
 
 - [#19](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/19) Avoid href=/ when issuing a relative link to the current page ([Andreas Lind](mailto:andreaslindpetersen@gmail.com))
