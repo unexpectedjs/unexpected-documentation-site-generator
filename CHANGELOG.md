@@ -1,3 +1,7 @@
+### v6.1.0 (2019-11-13)
+
+- [#22](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/22) Bump lodash from 4.17.11 to 4.17.15 ([dependabot[bot]](mailto:49699333+dependabot[bot]@users.noreply.github.com))
+
 ### v5.1.0 (2019-01-03)
 
 - [#20](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/20) Allow top-level menu pages to not generate a menu entry ([Sune Simonsen](mailto:sune@we-knowhow.dk))
