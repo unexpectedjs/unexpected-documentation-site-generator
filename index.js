@@ -237,11 +237,14 @@ module.exports = function generate(options) {
           return 0;
         });
       });
+
       metadata.assertionsByType = assertionsByType;
+
       next();
     })
     .use(function(files, metalsmith, next) {
       var metadata = metalsmith.metadata();
+
       Object.keys(metadata.assertionsByType).forEach(function(type) {
         var declarations = [];
         metadata.assertionsByType[type].forEach(function(assertion) {
@@ -264,6 +267,46 @@ module.exports = function generate(options) {
     .use(function(files, metalsmith, next) {
       var metadata = metalsmith.metadata();
       var indexData = [];
+
+      let page;
+      const orderedPages = [];
+      const unorderedPages = metadata.collections.menuPages;
+
+      const findAndRemovePageByUrl = url => {
+        const pageIndex = unorderedPages.findIndex(page => page.url === url);
+        if (pageIndex > -1) {
+          return unorderedPages.splice(pageIndex, 1)[0];
+        } else {
+          return null;
+        }
+      };
+
+      if ((page = findAndRemovePageByUrl('/assertions/'))) {
+        page.template = 'assertion.ejs';
+        page.declarations = [];
+        orderedPages.push(page);
+      } else if (Object.keys(metadata.assertionsByType).length > 0) {
+        const firstAssertion =
+          metadata.assertionsByType[
+            Object.keys(metadata.assertionsByType)[0]
+          ][0];
+        orderedPages.push({
+          title: 'Assertions',
+          url: firstAssertion.url
+        });
+      }
+
+      if ((page = findAndRemovePageByUrl('/api/'))) {
+        page.template = 'api.ejs';
+        orderedPages.push(page);
+      } else if (metadata.collections.apiPages.length > 0) {
+        orderedPages.push({
+          title: 'API',
+          url: metadata.collections.apiPages[0].url
+        });
+      }
+
+      metadata.collections.menuPages = orderedPages.concat(unorderedPages);
 
       metadata.collections.apiPages.forEach(function(assertion) {
         indexData.push({
