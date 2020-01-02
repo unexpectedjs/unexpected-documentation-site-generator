@@ -20,10 +20,10 @@
                 <li class="<%- path === '' ? 'active' : '' %>"><a href="<%= (relative('/') || '.') + '/' %>"><%= page.title %></a></li>
                 <% }) %>
                 <% if (Object.keys(assertionsByType).length > 0) { %>
-                <li class="<%- path.match(/^assertions\/?/) ? 'active' : '' %>"><a href="<%= (relative(assertionsByType[Object.keys(assertionsByType)[0]][0].url) || '') + '/' %>">Assertions</a></li>
+                <li class="<%- path.match(/^assertions\/?/) ? 'active' : '' %>"><a href="<%= (relative(assertionsUrl) || '.') + '/' %>">Assertions</a></li>
                 <% } %>
                 <% if (collections.apiPages.length > 0) { %>
-                <li class="<%- path.match(/^api\/?/) ? 'active' : '' %>"><a href="<%= (relative(collections.apiPages[0].url) || '.') + '/' %>">API</a></li>
+                <li class="<%- path.match(/^api\/?/) ? 'active' : '' %>"><a href="<%= (relative(apiPagesUrl) || '.') + '/' %>">API</a></li>
                 <% } %>
                 <% collections.menuPages.forEach(function (page) { %>
                 <li class="<%- '/' + path + '/' === page.url ? 'active' : '' %>"><a href="<%= (relative(page.url) || '.') + '/' %>"><%= page.title %></a></li>
