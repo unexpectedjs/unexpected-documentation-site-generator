@@ -19,10 +19,10 @@
                 <% collections.pages.filter(function (page) { return page.url === '/' }).forEach(function (page) { %>
                 <li class="<%- path === '' ? 'active' : '' %>"><a href="<%= (relative('/') || '.') + '/' %>"><%= page.title %></a></li>
                 <% }) %>
-                <% if (Object.keys(assertionsByType).length > 0) { %>
+                <% if (assertionsUrl) { %>
                 <li class="<%- path.match(/^assertions\/?/) ? 'active' : '' %>"><a href="<%= (relative(assertionsUrl) || '.') + '/' %>">Assertions</a></li>
                 <% } %>
-                <% if (collections.apiPages.length > 0) { %>
+                <% if (apiPagesUrl) { %>
                 <li class="<%- path.match(/^api\/?/) ? 'active' : '' %>"><a href="<%= (relative(apiPagesUrl) || '.') + '/' %>">API</a></li>
                 <% } %>
                 <% collections.menuPages.forEach(function (page) { %>

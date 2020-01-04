@@ -254,17 +254,23 @@ module.exports = function generate(options) {
       });
       metadata.assertionsByType = assertionsByType;
 
-      metadata.assertionsUrl = metadata.collections.assertions.some(
-        page => page.url === '/assertions/'
-      )
-        ? '/assertions/'
-        : assertionsByType[Object.keys(assertionsByType)[0]][0].url;
+      metadata.assertionsUrl = null;
+      if (Object.keys(assertionsByType).length > 0) {
+        metadata.assertionsUrl = metadata.collections.assertions.some(
+          page => page.url === '/assertions/'
+        )
+          ? '/assertions/'
+          : assertionsByType[Object.keys(assertionsByType)[0]][0].url;
+      }
 
-      metadata.apiPagesUrl = metadata.collections.apiPages.some(
-        page => page.url === '/api/'
-      )
-        ? '/api/'
-        : metadata.collections.apiPages[0].url;
+      metadata.apiPagesUrl = null;
+      if (metadata.collections.apiPages.length > 0) {
+        metadata.apiPagesUrl = metadata.collections.apiPages.some(
+          page => page.url === '/api/'
+        )
+          ? '/api/'
+          : metadata.collections.apiPages[0].url;
+      }
 
       next();
     })
