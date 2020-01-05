@@ -1,3 +1,7 @@
+### v6.2.0 (2020-01-05)
+
+- [#24](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/24) Allow overriding content of api and assertion top-level pages ([Sune Simonsen](mailto:sune@we-knowhow.dk))
+
 ### v6.1.0 (2019-11-13)
 
 - [#22](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/22) Bump lodash from 4.17.11 to 4.17.15 ([dependabot[bot]](mailto:49699333+dependabot[bot]@users.noreply.github.com))
