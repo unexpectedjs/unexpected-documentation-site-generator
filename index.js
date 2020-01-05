@@ -120,7 +120,10 @@ module.exports = function generate(options) {
     return result;
   }
 
-  var assertionsPattern = options.assertions || 'assertions/*/*.md';
+  var assertionsPattern = options.assertions || [
+    'assertions/*/*.md',
+    'assertions.md'
+  ];
   var output = options.output || 'site-build';
 
   metalSmith('.')
@@ -132,10 +135,10 @@ module.exports = function generate(options) {
           pattern: assertionsPattern
         },
         apiPages: {
-          pattern: 'api/*.md'
+          pattern: ['api/*.md', 'api.md']
         },
         pages: {
-          pattern: '*.md'
+          pattern: ['*.md', '!assertions.md', '!api.md']
         }
       })
     )
@@ -151,34 +154,44 @@ module.exports = function generate(options) {
           return /\.md$/.test(file);
         })
         .forEach(function(file) {
-          var id = file.match(/([^/]+)\.md$/)[1];
-          var name = idToName(id);
-
-          if (!files[file].title) {
-            files[file].title = name;
-          }
+          const id = file.match(/([^/]+)\.md$/)[1];
+          const name = idToName(id);
 
           if (files[file].collection.indexOf('apiPages') !== -1) {
             files[file].template = 'api.ejs';
+
+            if (file === 'api.md') {
+              files[file].title = 'API';
+            }
           } else if (files[file].collection.indexOf('assertions') !== -1) {
-            var type = file.match(/^assertions\/([^/]+)/)[1];
-
-            files[file].declarations = _.uniq(
-              (expect.assertions[name] || [])
-                .filter(function(assertionRule) {
-                  return assertionRule.subject.type.name === type;
-                })
-                .map(function(assertionRule) {
-                  return assertionRule.declaration.replace(
-                    /<.*?>/,
-                    '<' + assertionRule.subject.type.name + '>'
-                  );
-                })
-            );
-
             files[file].template = 'assertion.ejs';
-            files[file].windowTitle = type + ' - ' + name;
-            files[file].type = type;
+            files[file].declarations = [];
+
+            if (file === 'assertions.md') {
+              files[file].title = 'Assertions';
+            } else {
+              const type = file.match(/^assertions\/([^/]+)/)[1];
+
+              files[file].declarations = _.uniq(
+                (expect.assertions[name] || [])
+                  .filter(function(assertionRule) {
+                    return assertionRule.subject.type.name === type;
+                  })
+                  .map(function(assertionRule) {
+                    return assertionRule.declaration.replace(
+                      /<.*?>/,
+                      '<' + assertionRule.subject.type.name + '>'
+                    );
+                  })
+              );
+
+              files[file].windowTitle = name + ' (' + type + ')';
+              files[file].type = type;
+            }
+          }
+
+          if (!files[file].title) {
+            files[file].title = name;
           }
 
           if (!files[file].windowTitle) {
@@ -218,9 +231,11 @@ module.exports = function generate(options) {
       // Make sure that the most important types are listed first and in this order:
       var assertionsByType = {};
       metadata.collections.assertions.forEach(function(assertion) {
-        assertionsByType[assertion.type] =
-          assertionsByType[assertion.type] || [];
-        assertionsByType[assertion.type].push(assertion);
+        if (assertion.type) {
+          assertionsByType[assertion.type] =
+            assertionsByType[assertion.type] || [];
+          assertionsByType[assertion.type].push(assertion);
+        }
       });
 
       assertionsByType = sortTypesByHierarchy(assertionsByType);
@@ -238,6 +253,25 @@ module.exports = function generate(options) {
         });
       });
       metadata.assertionsByType = assertionsByType;
+
+      metadata.assertionsUrl = null;
+      if (Object.keys(assertionsByType).length > 0) {
+        metadata.assertionsUrl = metadata.collections.assertions.some(
+          page => page.url === '/assertions/'
+        )
+          ? '/assertions/'
+          : assertionsByType[Object.keys(assertionsByType)[0]][0].url;
+      }
+
+      metadata.apiPagesUrl = null;
+      if (metadata.collections.apiPages.length > 0) {
+        metadata.apiPagesUrl = metadata.collections.apiPages.some(
+          page => page.url === '/api/'
+        )
+          ? '/api/'
+          : metadata.collections.apiPages[0].url;
+      }
+
       next();
     })
     .use(function(files, metalsmith, next) {
@@ -274,7 +308,7 @@ module.exports = function generate(options) {
 
       metadata.collections.assertions.forEach(function(assertion) {
         indexData.push({
-          label: assertion.title + ' (' + assertion.type + ')',
+          label: assertion.windowTitle,
           url: assertion.url
         });
       });
