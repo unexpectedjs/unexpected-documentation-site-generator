@@ -122,7 +122,6 @@ module.exports = async function generate(options) {
 
   const stats = await new Evaldown({
     commentMarker: 'unexpected-markdown',
-    outputCapture: 'nowrap',
     outputFormat: 'inlined',
     sourcePath: path.join(cwd, 'documentation'),
     targetPath: path.join(cwd, tmpOutput),
