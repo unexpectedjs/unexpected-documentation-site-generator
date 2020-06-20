@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "async": "3.2.0",
-    "autoprefixer": "9.7.5",
+    "autoprefixer": "9.8.1",
     "debug": "4.1.0",
     "ejs": "2.5.6",
     "gh-pages": "2.0.1",
