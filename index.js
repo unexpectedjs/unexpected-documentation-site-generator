@@ -83,13 +83,13 @@ module.exports = async function generate(options) {
     });
   }
 
-  var expect = createExpect(options);
+  var localExpect = createExpect(options);
 
   function sortTypesByHierarchy(assertionsByType) {
     var typeIndex = {};
     var unknownTypes = [];
     Object.keys(assertionsByType).forEach(function(typeName) {
-      var type = expect.getType(typeName);
+      var type = localExpect.getType(typeName);
       if (type) {
         addTypeToIndex(typeIndex, type);
       } else {
@@ -181,7 +181,7 @@ module.exports = async function generate(options) {
                 const type = file.match(/^assertions\/([^/]+)/)[1];
 
                 files[file].declarations = _.uniq(
-                  (expect.assertions[name] || [])
+                  (localExpect.assertions[name] || [])
                     .filter(function(assertionRule) {
                       return assertionRule.subject.type.name === type;
                     })
