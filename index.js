@@ -1,11 +1,14 @@
 /*global __dirname*/
-var fsExtra = require('fs-extra');
 var Evaldown = require('evaldown');
 var metalSmith = require('metalsmith');
+var os = require('os');
 var path = require('path');
+var rimraf = require('rimraf');
+var util = require('util');
 var _ = require('lodash');
 
 var createExpect = require('./lib/createExpect');
+var rimrafAsync = util.promisify(rimraf);
 
 function idToName(id) {
   return id.replace(/-/g, ' ');
@@ -118,13 +121,13 @@ module.exports = async function generate(options) {
     'assertions.md'
   ];
   var output = options.output || 'site-build';
-  var tmpOutput = `${output}-tmp`;
+  var tmpOutput = path.join(os.tmpdir(), 'udsg', String(process.pid));
 
   const stats = await new Evaldown({
     commentMarker: 'unexpected-markdown',
     outputFormat: 'inlined',
     sourcePath: path.join(cwd, 'documentation'),
-    targetPath: path.join(cwd, tmpOutput),
+    targetPath: tmpOutput,
     fileGlobals: {
       expect: options => createExpect(options.metadata)
     }
@@ -357,5 +360,5 @@ module.exports = async function generate(options) {
       });
   });
 
-  await fsExtra.remove(tmpOutput);
+  await rimrafAsync(tmpOutput, { glob: false });
 };
