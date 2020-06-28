@@ -127,8 +127,7 @@ module.exports = async function generate(options) {
     targetPath: path.join(cwd, tmpOutput),
     fileGlobals: {
       expect: options => createExpect(options.metadata)
-    },
-    update: !!options['update-examples']
+    }
   }).processFiles();
 
   console.log(`evaldown completed with ${JSON.stringify(stats)}`);
