@@ -2,4 +2,6 @@
 var argv = require('minimist')(process.argv.slice(2));
 
 var generator = require('../index');
-generator(argv);
+(async () => {
+  await generator(argv);
+})();
