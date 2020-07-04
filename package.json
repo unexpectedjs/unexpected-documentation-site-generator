@@ -18,10 +18,9 @@
   },
   "homepage": "https://github.com/unexpectedjs/unexpected-documentation-site-generator",
   "scripts": {
-    "changelog": "offline-github-changelog > CHANGELOG.md",
     "lint": "eslint .",
     "preversion": "npm run lint",
-    "postversion": "npm run changelog && git add CHANGELOG.md && git commit --allow-empty -m 'Update changelog'"
+    "version": "offline-github-changelog --next=${npm_package_version} > CHANGELOG.md && git add CHANGELOG.md"
   },
   "dependencies": {
     "async": "3.2.0",
