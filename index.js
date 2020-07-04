@@ -1,6 +1,8 @@
 /*global __dirname*/
 var Evaldown = require('evaldown');
 var metalSmith = require('metalsmith');
+var fs = require('fs').promises;
+var glob = require('glob');
 var os = require('os');
 var path = require('path');
 var rimraf = require('rimraf');
@@ -8,7 +10,22 @@ var util = require('util');
 var _ = require('lodash');
 
 var createExpect = require('./lib/createExpect');
+var globAsync = util.promisify(glob);
 var rimrafAsync = util.promisify(rimraf);
+
+async function copyDocumentationAssets(sourceDir, targetDir) {
+  const assetFilePaths = await globAsync('**/!(**.md)', {
+    cwd: sourceDir,
+    nodir: true
+  });
+
+  for (const filePath of assetFilePaths) {
+    await fs.copyFile(
+      path.join(sourceDir, filePath),
+      path.join(targetDir, filePath)
+    );
+  }
+}
 
 function idToName(id) {
   return id.replace(/-/g, ' ');
@@ -120,13 +137,14 @@ module.exports = async function generate(options) {
     'assertions/*/*.md',
     'assertions.md'
   ];
+  var documentation = path.join(cwd, 'documentation');
   var output = options.output || 'site-build';
   var tmpOutput = path.join(os.tmpdir(), 'udsg', String(process.pid));
 
   const stats = await new Evaldown({
     commentMarker: 'unexpected-markdown',
     outputFormat: 'inlined',
-    sourcePath: path.join(cwd, 'documentation'),
+    sourcePath: documentation,
     targetPath: tmpOutput,
     fileGlobals: {
       expect: options => createExpect(options.metadata)
@@ -134,6 +152,10 @@ module.exports = async function generate(options) {
   }).processFiles();
 
   console.log(`evaldown completed with ${JSON.stringify(stats)}`);
+
+  await copyDocumentationAssets(documentation, tmpOutput);
+
+  console.log('copied documentation assets');
 
   await new Promise((resolve, reject) => {
     metalSmith('.')
