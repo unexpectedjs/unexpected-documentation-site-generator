@@ -1,3 +1,10 @@
+### v7.0.0 (2020-07-04)
+
+- [#43](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/43) Port to evaldown ([Alex J Burke](mailto:alex@alexjeffburke.com))
+- [#34](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/34) Upgrade autoprefixer to version 9.7.5 ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
+- [#33](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/33) Bump minimist from 1.2.0 to 1.2.5 ([dependabot[bot]](mailto:49699333+dependabot[bot]@users.noreply.github.com))
+- [#32](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/32) Upgrade async to version 3.2.0 ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
+
 ### v6.2.0 (2020-01-05)
 
 - [#24](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/24) Allow overriding content of api and assertion top-level pages ([Sune Simonsen](mailto:sune@we-knowhow.dk))
