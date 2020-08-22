@@ -27,6 +27,16 @@ async function copyDocumentationAssets(sourceDir, targetDir) {
   }
 }
 
+async function decodeOptions(opts, cwd) {
+  if (opts.require) {
+    const modulePath = path.resolve(cwd, opts.require);
+    opts.filePreamble = await fs.readFile(modulePath, 'utf8');
+    opts.requirePath = path.dirname(modulePath);
+  }
+
+  return opts;
+}
+
 function idToName(id) {
   return id.replace(/-/g, ' ');
 }
@@ -90,19 +100,6 @@ function addTypeToIndex(typeIndex, type) {
 }
 
 module.exports = async function generate(options) {
-  if (options.require) {
-    var moduleNames = options.require;
-    if (!Array.isArray(moduleNames)) {
-      moduleNames = [moduleNames];
-    }
-    moduleNames.forEach(function(moduleName) {
-      if (/^[./]/.test(moduleName)) {
-        moduleName = path.resolve(process.cwd(), moduleName);
-      }
-      require(moduleName);
-    });
-  }
-
   var localExpect = createExpect(options);
 
   function sortTypesByHierarchy(assertionsByType) {
@@ -141,7 +138,16 @@ module.exports = async function generate(options) {
   var output = options.output || 'site-build';
   var tmpOutput = path.join(os.tmpdir(), 'udsg', String(process.pid));
 
+  var config;
+  try {
+    config = require(path.join(cwd, options.config));
+  } catch (e) {
+    config = null;
+  }
+  options = { ...config, ...options };
+
   const statsObject = await new Evaldown({
+    ...(await decodeOptions(options, cwd)),
     commentMarker: 'unexpected-markdown',
     outputFormat: 'inlined',
     sourcePath: documentation,
