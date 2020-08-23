@@ -1,3 +1,10 @@
+### v7.0.2 (2020-08-23)
+
+- [#51](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/51) Error if no documentation was generated and exit correctly. ([Alex J Burke](mailto:alex@alexjeffburke.com))
+- [#47](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/47) Upgrade autoprefixer to version 9.8.6 ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
+- [#28](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/28) Upgrade glob to version 7.1.6 ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
+- [#46](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/46) Bump lodash from 4.17.15 to 4.17.19 ([dependabot[bot]](mailto:49699333+dependabot[bot]@users.noreply.github.com))
+
 ### v7.0.1 (2020-07-04)
 
 #### Pull requests
