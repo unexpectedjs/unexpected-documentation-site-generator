@@ -27,16 +27,6 @@ async function copyDocumentationAssets(sourceDir, targetDir) {
   }
 }
 
-async function decodeOptions(opts, cwd) {
-  if (opts.require) {
-    const modulePath = path.resolve(cwd, opts.require);
-    opts.filePreamble = await fs.readFile(modulePath, 'utf8');
-    opts.requirePath = path.dirname(modulePath);
-  }
-
-  return opts;
-}
-
 function idToName(id) {
   return id.replace(/-/g, ' ');
 }
@@ -145,9 +135,10 @@ module.exports = async function generate(options) {
     config = null;
   }
   options = { ...config, ...options };
+  options = { ...options, ...(await Evaldown.decodeOptions(cwd, options)) };
 
   const statsObject = await new Evaldown({
-    ...(await decodeOptions(options, cwd)),
+    ...options,
     commentMarker: 'unexpected-markdown',
     outputFormat: 'inlined',
     sourcePath: documentation,
