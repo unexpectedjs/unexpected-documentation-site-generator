@@ -3,5 +3,10 @@ var argv = require('minimist')(process.argv.slice(2));
 
 var generator = require('../index');
 (async () => {
-  await generator(argv);
+  try {
+    await generator(argv);
+  } catch (e) {
+    console.log(e.message);
+    process.exit(1);
+  }
 })();

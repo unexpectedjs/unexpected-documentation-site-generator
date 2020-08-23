@@ -141,7 +141,7 @@ module.exports = async function generate(options) {
   var output = options.output || 'site-build';
   var tmpOutput = path.join(os.tmpdir(), 'udsg', String(process.pid));
 
-  const stats = await new Evaldown({
+  const statsObject = await new Evaldown({
     commentMarker: 'unexpected-markdown',
     outputFormat: 'inlined',
     sourcePath: documentation,
@@ -151,7 +151,13 @@ module.exports = async function generate(options) {
     }
   }).processFiles();
 
+  const stats = statsObject.toJSON();
   console.log(`evaldown completed with ${JSON.stringify(stats)}`);
+  if (stats.total === 0 || stats.errored === stats.total) {
+    throw new Error(
+      'No documentation was successfully generated. Unable to proceed.'
+    );
+  }
 
   await copyDocumentationAssets(documentation, tmpOutput);
 
