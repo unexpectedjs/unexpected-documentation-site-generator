@@ -1,3 +1,7 @@
+### v7.1.0 (2020-08-23)
+
+- [#49](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/49) Send the require option directly to evaldown and allow a config file. ([Alex J Burke](mailto:alex@alexjeffburke.com))
+
 ### v7.0.2 (2020-08-23)
 
 - [#51](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/51) Error if no documentation was generated and exit correctly. ([Alex J Burke](mailto:alex@alexjeffburke.com))
