@@ -23,7 +23,7 @@
     "version": "offline-github-changelog --next=${npm_package_version} > CHANGELOG.md && git add CHANGELOG.md"
   },
   "dependencies": {
-    "async": "3.2.0",
+    "async": "3.2.1",
     "autoprefixer": "9.8.6",
     "debug": "4.1.0",
     "ejs": "2.5.6",
