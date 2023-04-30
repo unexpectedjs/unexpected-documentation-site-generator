@@ -22,6 +22,9 @@
     "preversion": "npm run lint",
     "version": "offline-github-changelog --next=${npm_new_version} > CHANGELOG.md && git add CHANGELOG.md"
   },
+  "engines": {
+    "node": ">=14"
+  },
   "dependencies": {
     "async": "3.2.4",
     "autoprefixer": "9.8.6",
