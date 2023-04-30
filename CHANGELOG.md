@@ -1,6 +1,24 @@
+### v8.0.0 (2023-04-30)
+
+#### Pull requests
+
+- [#90](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/90) Upgrade async to version 3.2.4 ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
+- [#83](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/83) Upgrade glob to version 8.0.1 ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
+- [#79](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/79) Upgrade async to version 3.2.3 ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
+- [#75](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/75) Upgrade async to version 3.2.2 ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
+
+#### Commits to master
+
+- [Align changelog script with the node 14 version of npm.](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/8183c192e025c5f6b3dee00a8e83ec4e4e6841ae) ([Alex J Burke](mailto:alex@alexjeffburke.com))
+- [Work around unpublished ejs transformer and adapt to EJS3+ syntax.](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/031fb3f3343d37b61cf5e84fdcb70a84e890a166) ([Alex J Burke](mailto:alex@alexjeffburke.com))
+- [Bump changelog generator for one less warning.](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/293c7508b6374bb1b47ea359c0e71b6c43534163) ([Alex J Burke](mailto:alex@alexjeffburke.com))
+- [Bump dependencies affected by security issues.](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/d39099d1584024c66ec73589cacea0ba6013a347) ([Alex J Burke](mailto:alex@alexjeffburke.com))
+- [Pull out unused deps.](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/f2043db8b075d7220271837f05e5468caf97fb15) ([Alex J Burke](mailto:alex@alexjeffburke.com))
+- [+4 more](https://github.com/unexpectedjs/unexpected-documentation-site-generator/compare/v7.1.0...v8.0.0)
+
 ### v7.1.0 (2020-08-23)
 
-- [#49](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/49) Send the require option directly to evaldown and allow a config file. ([Alex J Burke](mailto:alex@alexjeffburke.com))
+- [#49](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/49) Send the require option directly to evaldown and allow a config file. ([Alex J Burke](mailto:alex@alexjeffburke.com), [Alex J Burke](mailto:alex@alexjeffburke.com))
 
 ### v7.0.2 (2020-08-23)
 
@@ -25,7 +43,7 @@
 
 #### Pull requests
 
-- [#43](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/43) Port to evaldown ([Alex J Burke](mailto:alex@alexjeffburke.com))
+- [#43](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/43) Port to evaldown ([Alex J Burke](mailto:alex@alexjeffburke.com), [Alex J Burke](mailto:alex@alexjeffburke.com), [Alex J Burke](mailto:alex@alexjeffburke.com), [Alex J Burke](mailto:alex@alexjeffburke.com), [Alex J Burke](mailto:alex@alexjeffburke.com), [Alex J Burke](mailto:alex@alexjeffburke.com), [Alex J Burke](mailto:alex@alexjeffburke.com), [Alex J Burke](mailto:alex@alexjeffburke.com), [Alex J Burke](mailto:alex@alexjeffburke.com))
 - [#34](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/34) Upgrade autoprefixer to version 9.7.5 ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
 - [#33](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/33) Bump minimist from 1.2.0 to 1.2.5 ([dependabot[bot]](mailto:49699333+dependabot[bot]@users.noreply.github.com))
 - [#32](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/32) Upgrade async to version 3.2.0 ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
@@ -38,7 +56,7 @@
 
 #### Pull requests
 
-- [#24](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/24) Allow overriding content of api and assertion top-level pages ([Sune Simonsen](mailto:sune@we-knowhow.dk))
+- [#24](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/24) Allow overriding content of api and assertion top-level pages ([Sune Simonsen](mailto:sune@we-knowhow.dk), [Sune Simonsen](mailto:sune@we-knowhow.dk))
 
 #### Commits to master
 
@@ -79,12 +97,12 @@
 ### v5.0.1 (2019-01-02)
 
 - [#19](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/19) Avoid href=\/ when issuing a relative link to the current page ([Andreas Lind](mailto:andreaslindpetersen@gmail.com))
-- [#11](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/11) Add prettier setup, remove onelint ([Andreas Lind](mailto:andreaslindpetersen@gmail.com))
-- [#10](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/10) Improved release setup with changelog and linting ([Sune Simonsen](mailto:sune@we-knowhow.dk))
+- [#11](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/11) Add prettier setup, remove onelint ([Andreas Lind](mailto:andreaslindpetersen@gmail.com), [Andreas Lind](mailto:andreaslindpetersen@gmail.com), [Andreas Lind](mailto:andreaslindpetersen@gmail.com))
+- [#10](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/10) Improved release setup with changelog and linting ([Sune Simonsen](mailto:sune@we-knowhow.dk), [Sune Simonsen](mailto:sune@we-knowhow.dk))
 
 ### v5.0.0 (2018-10-30)
 
-- [#8](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/8) Use gh pages \(Major\) ([Sune Simonsen](mailto:sune@we-knowhow.dk))
+- [#8](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/8) Use gh pages \(Major\) ([Sune Simonsen](mailto:sune@we-knowhow.dk), [Sune Simonsen](mailto:sune@we-knowhow.dk), [Sune Simonsen](mailto:sune@we-knowhow.dk))
 - [#9](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/9) Upgraded lodash and debug to fix security issues ([Sune Simonsen](mailto:sune@we-knowhow.dk))
 
 ### v4.7.1 (2018-08-11)
@@ -116,7 +134,7 @@
 
 #### Pull requests
 
-- [#5](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/5) Add `--output` and `--assertions` options ([Dave Brotherstone](mailto:davegb@pobox.com))
+- [#5](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/5) Add \`--output\` and \`--assertions\` options ([Dave Brotherstone](mailto:davegb@pobox.com))
 
 #### Commits to master
 
@@ -282,7 +300,7 @@
 - [make the github repository for the site configurable](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/eb97d7e4bda2bb8a17f63f89a2fd6a21a6f2307c) ([Sune Simonsen](mailto:sune@we-knowhow.dk))
 
 ### v1.0.0
+
 - [Removed peer dependency on unexpected](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/e61cd104bbec441d8f69e5c5977912b80f516729) ([Sune Simonsen](mailto:sune@we-knowhow.dk))
 - [Initial commit](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/ad970fb45f729366d65b576962efd81de81c34f1) ([Sune Simonsen](mailto:sune@we-knowhow.dk))
 - [Added package.json](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/da3d681cb76ac0506c7a0ff96f51af088060c2aa) ([Sune Simonsen](mailto:sune@we-knowhow.dk))
-
