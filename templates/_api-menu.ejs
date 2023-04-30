@@ -2,7 +2,7 @@
     <ul>
         <% collections.apiPages.filter(page => page.url !== '/api/').forEach((apiPage) => { %>
         <li class="<%= '/' + path + '/' === apiPage.url ? 'active' : '' %>">
-            <a href="<%= (relative(apiPage.url) || '.') + '/' %>"><%= apiPage.title %></a>
+            <a href="<%= ('../' + apiPage.pageName + '/') %>"><%= apiPage.title %></a>
         </li>
         <% }) %>
     </ul>

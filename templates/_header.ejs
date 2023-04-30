@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
-    <link rel="stylesheet" href="<%= relative('/static/normalize.css') %>" type="text/css" media="screen" />
-    <link rel="stylesheet" href="<%= relative('/static/main.css') %>" type="text/css" media="screen" />
-    <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="<%= relative('/static/bug-icon-black.ico') %>">
+    <link rel="stylesheet" href="<%= '/static/normalize.css' %>" type="text/css" media="screen" />
+    <link rel="stylesheet" href="<%= '/static/main.css' %>" type="text/css" media="screen" />
+    <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="<%= '/static/bug-icon-black.ico' %>">
     <title><%= windowTitle %></title>
 </head>
 <body class="sidebar-hidden<%=typeof hasSidebar !== 'undefined' ? ' has-sidebar' : ''%><%=typeof theme !== 'undefined' ? ' theme-' + theme : '' %>">
@@ -17,16 +17,16 @@
                     <button class="menu-toggle" onclick="toggleSidebar()"></button>
                 </li>
                 <% collections.pages.filter(function (page) { return page.url === '/' }).forEach(function (page) { %>
-                <li class="<%- path === '' ? 'active' : '' %>"><a href="<%= (relative('/') || '.') + '/' %>"><%= page.title %></a></li>
+                <li class="<%- path === '' ? 'active' : '' %>"><a href="<%= '/' %>"><%= page.title %></a></li>
                 <% }) %>
                 <% if (assertionsUrl) { %>
-                <li class="<%- path.match(/^assertions\/?/) ? 'active' : '' %>"><a href="<%= (relative(assertionsUrl) || '.') + '/' %>">Assertions</a></li>
+                <li class="<%- path.match(/^assertions\/?/) ? 'active' : '' %>"><a href="<%= assertionsUrl %>">Assertions</a></li>
                 <% } %>
                 <% if (apiPagesUrl) { %>
-                <li class="<%- path.match(/^api\/?/) ? 'active' : '' %>"><a href="<%= (relative(apiPagesUrl) || '.') + '/' %>">API</a></li>
+                <li class="<%- path.match(/^api\/?/) ? 'active' : '' %>"><a href="<%= apiPagesUrl %>">API</a></li>
                 <% } %>
                 <% collections.menuPages.forEach(function (page) { %>
-                <li class="<%- '/' + path + '/' === page.url ? 'active' : '' %>"><a href="<%= (relative(page.url) || '.') + '/' %>"><%= page.title %></a></li>
+                <li class="<%- '/' + path + '/' === page.url ? 'active' : '' %>"><a href="<%= page.url %>"><%= page.title %></a></li>
                 <% }) %>
             </ul>
         </nav>

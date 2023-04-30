@@ -125,7 +125,7 @@ module.exports = async function generate(options) {
     'assertions.md'
   ];
   var documentation = path.join(cwd, 'documentation');
-  var output = options.output || 'site-build';
+  var output = path.join(cwd, options.output || 'site-build');
   var tmpOutput = path.join(os.tmpdir(), 'udsg', String(process.pid));
 
   var config;
@@ -158,14 +158,14 @@ module.exports = async function generate(options) {
 
   await copyDocumentationAssets(documentation, tmpOutput);
 
-  console.log('copied documentation assets');
+  console.log(`copied documentation assets to temporary dir: ${tmpOutput}`);
 
   await new Promise((resolve, reject) => {
     metalSmith('.')
       .destination(output)
       .source(tmpOutput)
       .use(
-        require('metalsmith-collections')({
+        require('@metalsmith/collections')({
           assertions: {
             pattern: assertionsPattern
           },
@@ -192,14 +192,17 @@ module.exports = async function generate(options) {
             const id = file.match(/([^/]+)\.md$/)[1];
             const name = idToName(id);
 
+            if (!files[file].template) files[file].template = 'default.ejs';
+            files[file].layout = files[file].template;
+
             if (files[file].collection.indexOf('apiPages') !== -1) {
-              files[file].template = 'api.ejs';
+              files[file].layout = 'api.ejs';
 
               if (file === 'api.md') {
                 files[file].title = 'API';
               }
             } else if (files[file].collection.indexOf('assertions') !== -1) {
-              files[file].template = 'assertion.ejs';
+              files[file].layout = 'assertion.ejs';
               files[file].declarations = [];
 
               if (file === 'assertions.md') {
@@ -233,8 +236,14 @@ module.exports = async function generate(options) {
               files[file].windowTitle = files[file].title;
             }
 
-            files[file].url =
-              '/' + file.replace(/(\/?)index.md$/, '$1').replace(/\.md$/, '/');
+            const pagePath = /(\/?)index.md$/.test(file)
+              ? file.replace(/(\/?)index.md$/, '$1')
+              : file;
+            const pageName = path.basename(pagePath).replace(/\.md$/, '');
+            files[file].pageName = pageName;
+            files[file].path =
+              pageName === '' ? '' : `${path.dirname(pagePath)}/${pageName}/`;
+            files[file].url = `/${files[file].path}`;
           });
         next();
       })
@@ -323,8 +332,10 @@ module.exports = async function generate(options) {
             windowTitle: type,
             title: type,
             declarations: _.uniq(declarations),
+            layout: 'type.ejs',
             template: 'type.ejs',
-            url: path,
+            path,
+            url: `/${path}`,
             contents: ''
           };
         });
@@ -352,29 +363,26 @@ module.exports = async function generate(options) {
         };
         next();
       })
-      .use(require('metalsmith-markdown')())
+      .use(require('@metalsmith/markdown')())
       // permalinks with no options will just make pretty urls...
-      .use(require('metalsmith-permalinks')({ relative: false }))
+      .use(require('@metalsmith/permalinks')({ relative: false }))
       .use(function(files, metalsmith, next) {
         // Useful for debugging ;-)
         // require('uninspected').log(files);
         next();
       })
-      .use(require('metalsmith-less')())
-      .use(require('metalsmith-relative')())
       .use(
-        require('metalsmith-templates')({
-          engine: 'ejs',
-          directory: path.resolve(__dirname, 'templates')
+        require('@fidian/metalsmith-less')({
+          removeSource: true
         })
       )
+      .use(require('metalsmith-html-relative')())
       .use(
-        require('metalsmith-autoprefixer')({
-          browsers: 'last 2 versions',
-          cascade: false
+        require('@metalsmith/layouts')({
+          directory: path.join(__dirname, 'templates'),
+          pattern: '**/*.html'
         })
       )
-      .use(require('./lib/delete-less-files')())
       .build(function(err) {
         if (err) {
           reject(err);

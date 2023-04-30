@@ -1,10 +1,10 @@
 <nav id="assertion-menu" class="sidebar js-remember-scroll-position">
     <% Object.keys(assertionsByType).forEach(function (type) { %>
-        <h3 class="<%= path === 'assertions/' + type ? 'active' : '' %>"><a href="<%= (relative('/assertions/' + type + '/') || '.') + '/' %>"><%= type %></a></h3>
+        <h3 class="<%= url === '/assertions/' + type + '/' ? 'active' : '' %>"><a href="<%= ((layout === 'type.ejs' ? '../' : '../../') + type + '/') %>"><%= type %></a></h3>
         <ul>
             <% assertionsByType[type].forEach(function (assertion) { %>
             <li class="<%= '/' + path + '/' === assertion.url ? 'active' : '' %>">
-                <a href="<%= (relative(assertion.url) || '.') + '/' %>"><%= assertion.title %></a>
+                <a href="<%= ((layout === 'type.ejs' ? '../' : '../../') + assertion.type + '/' + assertion.pageName + '/') %>"><%= assertion.title %></a>
             </li>
             <% }) %>
         </ul>
