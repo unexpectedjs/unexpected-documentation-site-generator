@@ -20,7 +20,7 @@
   "scripts": {
     "lint": "eslint .",
     "preversion": "npm run lint",
-    "version": "offline-github-changelog --next=${npm_new_version} > CHANGELOG.md && git add CHANGELOG.md"
+    "version": "offline-github-changelog --next=${npm_package_version} > CHANGELOG.md && git add CHANGELOG.md"
   },
   "engines": {
     "node": ">=14"
