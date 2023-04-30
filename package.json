@@ -36,11 +36,11 @@
     "evaldown": "^2.0.0",
     "glob": "8.0.1",
     "jstransformer-ejs": "0.2.0",
-    "lodash": "4.17.19",
+    "lodash": "4.17.21",
     "magicpen-prism": "4.0.0",
     "metalsmith": "2.5.1",
     "metalsmith-html-relative": "0.4.6",
-    "minimist": "1.2.5",
+    "minimist": "1.2.8",
     "passerror": "1.1.1",
     "rimraf": "3.0.2",
     "stat-mode": "0.2.2"
