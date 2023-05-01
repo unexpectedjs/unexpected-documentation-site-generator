@@ -1,3 +1,7 @@
+### v8.0.1 (2023-05-01)
+
+- [Finish EJS3+ include syntax conversion. No comment.](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/da4ec9399224c67769f0a00921ba27a42005971b) ([Alex J Burke](mailto:alex@alexjeffburke.com))
+
 ### v8.0.0 (2023-04-30)
 
 #### Pull requests
