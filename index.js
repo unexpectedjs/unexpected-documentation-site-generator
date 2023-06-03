@@ -119,13 +119,21 @@ module.exports = async function generate(options) {
     return result;
   }
 
-  var cwd = process.cwd();
+  var cwd = options.cwd || process.cwd();
   var assertionsPattern = options.assertions || [
     'assertions/*/*.md',
     'assertions.md'
   ];
   var documentation = path.join(cwd, 'documentation');
-  var output = path.join(cwd, options.output || 'site-build');
+  var output = !options.output
+    ? path.join(cwd, 'site-build')
+    : path.join(
+        cwd,
+        path.isAbsolute(options.output)
+          ? path.relative(cwd, options.output)
+          : options.output
+      );
+
   var tmpOutput = path.join(os.tmpdir(), 'udsg', String(process.pid));
 
   var config;
