@@ -95,4 +95,16 @@ describe('index', () => {
       'https://github.com/someorg/somerepo'
     );
   });
+
+  it('should ignore the repository being excluded from the metadat', async () => {
+    const inputDir = path.join(TESTDATA_DIR, 'no-repo');
+
+    await generator({
+      cwd: inputDir,
+      output: TESTDATA_OUTPUT_DIR
+    });
+
+    const $ = await openAndParseOutput('index.html');
+    assert.strictEqual($('.github-ribbon').length, 0);
+  });
 });
