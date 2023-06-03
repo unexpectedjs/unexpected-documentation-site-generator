@@ -168,7 +168,7 @@ module.exports = async function generate(options) {
 
   console.log(`copied documentation assets to temporary dir: ${tmpOutput}`);
 
-  await new Promise((resolve, reject) => {
+  const metalsmithPromise = new Promise((resolve, reject) => {
     metalSmith('.')
       .destination(output)
       .source(tmpOutput)
@@ -401,5 +401,9 @@ module.exports = async function generate(options) {
       });
   });
 
-  await rimrafAsync(tmpOutput, { glob: false });
+  try {
+    await metalsmithPromise;
+  } finally {
+    await rimrafAsync(tmpOutput, { glob: false });
+  }
 };
