@@ -1,3 +1,11 @@
+### v8.1.0 (2023-08-29)
+
+- [Fix "Fork me on GitHub" ribbon.](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/2301f50266ef18108d4a4c79116f8b36a0a725fd) ([Alex J Burke](mailto:alex@alexjeffburke.com))
+- [Repair styling that had regressed across the documentation.](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/5677e149ccc20c46291b47e4c5e98b0b14151653) ([Alex J Burke](mailto:alex@alexjeffburke.com))
+- [Ensure the temporary directory is cleaned up unconditionally.](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/a733f756f315896bba53999774a9f2bf8973b2d9) ([Alex J Burke](mailto:alex@alexjeffburke.com))
+- [Allow the repository not to be specified.](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/d4ece33523f845e2683eb4d373b32c0f395256ca) ([Alex J Burke](mailto:alex@alexjeffburke.com))
+- [Add basic test case covering generation with title and repo metadata.](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/9785839ccdbdc176c12c2d69c4ca74c688802fd3) ([Alex J Burke](mailto:alex@alexjeffburke.com))
+
 ### v8.0.1 (2023-05-01)
 
 - [Finish EJS3+ include syntax conversion. No comment.](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/da4ec9399224c67769f0a00921ba27a42005971b) ([Alex J Burke](mailto:alex@alexjeffburke.com))
