@@ -91,12 +91,12 @@ describe('index', () => {
 
     const $ = await openAndParseOutput('index.html');
     assert.strictEqual(
-      $('.github-ribbon').attr('href'),
+      $('.github-fork-ribbon').attr('href'),
       'https://github.com/someorg/somerepo'
     );
   });
 
-  it('should ignore the repository being excluded from the metadat', async () => {
+  it('should ignore the repository being excluded from the metadata', async () => {
     const inputDir = path.join(TESTDATA_DIR, 'no-repo');
 
     await generator({
@@ -105,6 +105,6 @@ describe('index', () => {
     });
 
     const $ = await openAndParseOutput('index.html');
-    assert.strictEqual($('.github-ribbon').length, 0);
+    assert.strictEqual($('.github-fork-ribbon').length, 0);
   });
 });

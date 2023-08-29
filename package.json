@@ -54,6 +54,7 @@
     "eslint": "5.8.0",
     "eslint-config-pretty-standard": "2.0.0",
     "eslint-plugin-prettier": "3.0.0",
+    "github-fork-ribbon-css": "0.2.3",
     "mocha": "10.2.0",
     "offline-github-changelog": "^3.0.1",
     "prettier": "1.14.3"
