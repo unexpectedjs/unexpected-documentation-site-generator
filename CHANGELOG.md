@@ -1,3 +1,8 @@
+### v8.1.2 (2023-08-31)
+
+- [Fix selection of search results.](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/5dce84e1bd3166058907fbfd61e4c242cbe75bfb) ([Alex J Burke](mailto:alex@alexjeffburke.com))
+- [Nudge include static assets in a modern direction.](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/d5149de8ce87fad63bdfbeb961d9d1f8ff6d8b60) ([Alex J Burke](mailto:alex@alexjeffburke.com))
+
 ### v8.1.0 (2023-08-29)
 
 - [Fix "Fork me on GitHub" ribbon.](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/2301f50266ef18108d4a4c79116f8b36a0a725fd) ([Alex J Burke](mailto:alex@alexjeffburke.com))
