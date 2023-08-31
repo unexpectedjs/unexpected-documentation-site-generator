@@ -1,7 +1,7 @@
 <nav id="api-menu" class="sidebar js-remember-scroll-position">
     <ul>
-        <% collections.apiPages.filter(page => page.url !== '/api/').forEach((apiPage) => { %>
-        <li class="<%= '/' + path + '/' === apiPage.url ? 'active' : '' %>">
+        <% collections.apiPages.filter(page => page.page !== 'api/').forEach((apiPage) => { %>
+        <li class="<%= path === apiPage.path ? 'active' : '' %>">
             <a href="<%= ('../' + apiPage.pageName + '/') %>"><%= apiPage.title %></a>
         </li>
         <% }) %>

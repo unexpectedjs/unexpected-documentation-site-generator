@@ -6,6 +6,10 @@
 - [Allow the repository not to be specified.](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/d4ece33523f845e2683eb4d373b32c0f395256ca) ([Alex J Burke](mailto:alex@alexjeffburke.com))
 - [Add basic test case covering generation with title and repo metadata.](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/9785839ccdbdc176c12c2d69c4ca74c688802fd3) ([Alex J Burke](mailto:alex@alexjeffburke.com))
 
+### v8.0.2 (2023-08-31)
+
+- [Breaking: belatedly add means for handling of the baseUrl changes in 8](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/7f1fef4b6fb883515af85bcbc488a6e209d3f615) ([Alex J Burke](mailto:alex@alexjeffburke.com))
+
 ### v8.0.1 (2023-05-01)
 
 - [Finish EJS3+ include syntax conversion. No comment.](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/da4ec9399224c67769f0a00921ba27a42005971b) ([Alex J Burke](mailto:alex@alexjeffburke.com))
@@ -19,7 +23,7 @@
 - [#79](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/79) Upgrade async to version 3.2.3 ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
 - [#75](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/75) Upgrade async to version 3.2.2 ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
 
-#### Commits to master
+#### Commits to 8.x
 
 - [Align changelog script with the node 14 version of npm.](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/8183c192e025c5f6b3dee00a8e83ec4e4e6841ae) ([Alex J Burke](mailto:alex@alexjeffburke.com))
 - [Work around unpublished ejs transformer and adapt to EJS3+ syntax.](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/031fb3f3343d37b61cf5e84fdcb70a84e890a166) ([Alex J Burke](mailto:alex@alexjeffburke.com))
@@ -45,7 +49,7 @@
 
 - [#44](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/44) Ensure assets in the documentation directory are included in builds. ([Alex J Burke](mailto:alex@alexjeffburke.com))
 
-#### Commits to master
+#### Commits to 8.x
 
 - [Pull in newer version of the changelog generator for a1a4014.](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/1f715e8226b7462968239e233ff93c9c315c5f39) ([Alex J Burke](mailto:alex@alexjeffburke.com))
 - [Use the version hook to update changelog.](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/a1a401462f043e3e45d09635526af814642222b0) ([Alex J Burke](mailto:alex@alexjeffburke.com))
@@ -60,7 +64,7 @@
 - [#33](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/33) Bump minimist from 1.2.0 to 1.2.5 ([dependabot[bot]](mailto:49699333+dependabot[bot]@users.noreply.github.com))
 - [#32](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/32) Upgrade async to version 3.2.0 ([depfu[bot]](mailto:23717796+depfu[bot]@users.noreply.github.com))
 
-#### Commits to master
+#### Commits to 8.x
 
 - [Update changelog](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/dd8e0a12572f0c229c14561d1932950027b1c095) ([Sune Simonsen](mailto:sune@we-knowhow.dk))
 
@@ -70,7 +74,7 @@
 
 - [#24](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/24) Allow overriding content of api and assertion top-level pages ([Sune Simonsen](mailto:sune@we-knowhow.dk), [Sune Simonsen](mailto:sune@we-knowhow.dk))
 
-#### Commits to master
+#### Commits to 8.x
 
 - [Update changelog](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/5109a6dbba4d7b80923c967c3f3ddb95d417a7bf) ([Andreas Lind](mailto:andreaslindpetersen@gmail.com))
 
@@ -80,7 +84,7 @@
 
 - [#22](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/22) Bump lodash from 4.17.11 to 4.17.15 ([dependabot[bot]](mailto:49699333+dependabot[bot]@users.noreply.github.com))
 
-#### Commits to master
+#### Commits to 8.x
 
 - [Update metalsmith-unexpected-markdown to ^3.1.0](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/a6b4b3c166f9a6258e3b78ff1d213f40a017d7b4) ([Andreas Lind](mailto:andreaslindpetersen@gmail.com))
 - [Update changelog](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/2394c6eff50114f361df74e80b7da34737675c9d) ([Andreas Lind](mailto:andreaslindpetersen@gmail.com))
@@ -101,7 +105,7 @@
 
 - [#20](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/20) Allow top-level menu pages to not generate a menu entry ([Sune Simonsen](mailto:sune@we-knowhow.dk))
 
-#### Commits to master
+#### Commits to 8.x
 
 - [Fixed linting errors](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/fc4a3fba73cb439bb8e3797fb08dc5b33b23518e) ([Sune Simonsen](mailto:sune@we-knowhow.dk))
 - [Update changelog](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/2244fb19c8a36c4a027521c1742f78762594d978) ([Andreas Lind](mailto:andreaslindpetersen@gmail.com))
@@ -148,7 +152,7 @@
 
 - [#5](https://github.com/unexpectedjs/unexpected-documentation-site-generator/pull/5) Add \`--output\` and \`--assertions\` options ([Dave Brotherstone](mailto:davegb@pobox.com))
 
-#### Commits to master
+#### Commits to 8.x
 
 - [Simplified the assertionsPattern code a bit](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/1ba9209f8ffdd1a6bc4a445b344d13fba58bf775) ([Sune Simonsen](mailto:sune@we-knowhow.dk))
 - [Documented the --assertions options](https://github.com/unexpectedjs/unexpected-documentation-site-generator/commit/8dee26a0fd7f2d2ff49c08f38bca140a3ff6363e) ([Sune Simonsen](mailto:sune@we-knowhow.dk))

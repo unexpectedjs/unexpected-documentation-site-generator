@@ -6,6 +6,7 @@ var glob = require('glob');
 var os = require('os');
 var path = require('path');
 var rimraf = require('rimraf');
+var nodeUrl = require('url');
 var util = require('util');
 var _ = require('lodash');
 
@@ -164,6 +165,17 @@ module.exports = async function generate(options) {
     );
   }
 
+  let baseUrl = options['base-url'] || '/';
+  try {
+    const { pathname } = nodeUrl.parse(baseUrl);
+    if (pathname === null || !pathname.startsWith('/')) {
+      throw new Error();
+    }
+    if (!baseUrl.endsWith('/')) baseUrl += '/';
+  } catch (e) {
+    throw new Error(`Invalid base url "${baseUrl}". Unable to proceed.`);
+  }
+
   await copyDocumentationAssets(documentation, tmpOutput);
 
   console.log(`copied documentation assets to temporary dir: ${tmpOutput}`);
@@ -251,16 +263,18 @@ module.exports = async function generate(options) {
             files[file].pageName = pageName;
             files[file].path =
               pageName === '' ? '' : `${path.dirname(pagePath)}/${pageName}/`;
-            files[file].url = `/${files[file].path}`;
+            files[file].url = `${baseUrl}${files[file].path}`;
           });
         next();
       })
       .use(function(files, metalsmith, next) {
         var metadata = metalsmith.metadata();
 
+        metadata.baseUrl = baseUrl;
+
         metadata.collections.menuPages = metadata.collections.pages.filter(
           function(page) {
-            return page.url !== '/' && page.menuPage !== false;
+            return page.path !== '' && page.menuPage !== false;
           }
         );
 
@@ -309,18 +323,18 @@ module.exports = async function generate(options) {
         metadata.assertionsUrl = null;
         if (Object.keys(assertionsByType).length > 0) {
           metadata.assertionsUrl = metadata.collections.assertions.some(
-            page => page.url === '/assertions/'
+            page => page.path === 'assertions/'
           )
-            ? '/assertions/'
+            ? `${baseUrl}assertions/`
             : assertionsByType[Object.keys(assertionsByType)[0]][0].url;
         }
 
         metadata.apiPagesUrl = null;
         if (metadata.collections.apiPages.length > 0) {
           metadata.apiPagesUrl = metadata.collections.apiPages.some(
-            page => page.url === '/api/'
+            page => page.path === 'api/'
           )
-            ? '/api/'
+            ? `${baseUrl}api/`
             : metadata.collections.apiPages[0].url;
         }
 
@@ -343,7 +357,7 @@ module.exports = async function generate(options) {
             layout: 'type.ejs',
             template: 'type.ejs',
             path,
-            url: `/${path}`,
+            url: `${baseUrl}${path}`,
             contents: ''
           };
         });
