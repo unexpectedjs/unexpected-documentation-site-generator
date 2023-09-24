@@ -35,7 +35,7 @@
     "async": "3.2.4",
     "debug": "4.1.0",
     "evaldown": "^2.0.0",
-    "glob": "8.0.1",
+    "glob": "10.3.6",
     "jstransformer-ejs": "git+https://github.com/jstransformers/jstransformer-ejs#f344b4fdedea103aeb1f9047cef0a0ef14ce7f11",
     "lodash": "4.17.21",
     "magicpen-prism": "4.0.0",
