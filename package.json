@@ -39,7 +39,7 @@
     "jstransformer-ejs": "git+https://github.com/jstransformers/jstransformer-ejs#f344b4fdedea103aeb1f9047cef0a0ef14ce7f11",
     "lodash": "4.17.21",
     "magicpen-prism": "4.0.0",
-    "metalsmith": "2.5.1",
+    "metalsmith": "2.6.2",
     "metalsmith-html-relative": "0.4.6",
     "minimist": "1.2.8",
     "passerror": "1.1.1",
